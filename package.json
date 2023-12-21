@@ -3,20 +3,16 @@
   "version": "1.0.0",
   "description": "a 30 days of code challenge",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/abiola823/30DaysCodeChallenge.git"
   },
   "keywords": [
     "challenge"
   ],
   "author": "Olaide Abiola",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/abiola823/30DaysCodeChallenge/issues"
-  },
-  "homepage": "https://github.com/abiola823/30DaysCodeChallenge#readme"
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }

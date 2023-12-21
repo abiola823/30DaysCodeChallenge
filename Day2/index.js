@@ -1,6 +1,6 @@
 //Creating an http server using the node.js built-in module
 import http from 'http';
-
+const PORT = 3000;
 
 
 const server = http.createServer((req, res) => {
@@ -8,6 +8,8 @@ const server = http.createServer((req, res) => {
     res.write('Welcome to Kodecamp 30 Days Code Challenge');
     res.end();
 });
+
+
 
 //listen to client request 
 server.listen(PORT, () => console.log(`server running on port ${PORT}`));
