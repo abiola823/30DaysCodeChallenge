@@ -1,13 +1,22 @@
 {
   "name": "30dayscodechallenge",
   "version": "1.0.0",
-  "description": "",
+  "description": "a 30 days of code challenge",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abiola823/30DaysCodeChallenge.git"
+  },
+  "keywords": [
+    "challenge"
+  ],
   "author": "Olaide Abiola",
-  "license": "ISC", 
-  "type": "module"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abiola823/30DaysCodeChallenge/issues"
+  },
+  "homepage": "https://github.com/abiola823/30DaysCodeChallenge#readme"
 }

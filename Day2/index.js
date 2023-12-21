@@ -1,5 +1,6 @@
-import http from "http";
-const PORT = 3000;
+//Creating an http server using the node.js built-in module
+import http from 'http';
+
 
 
 const server = http.createServer((req, res) => {
@@ -8,9 +9,5 @@ const server = http.createServer((req, res) => {
     res.end();
 });
 
-
-
-
-
-
+//listen to client request 
 server.listen(PORT, () => console.log(`server running on port ${PORT}`));
