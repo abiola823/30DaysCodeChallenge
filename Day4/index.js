@@ -71,19 +71,7 @@ app.put('/update/:id', (req, res) => {
     }
 });
 
-// app.delete('/delete/:name', (req, res) => {
-//     try {
-//         const newUser = req.params.name
-//      const filter = person.filter((one, index) => {
-//             one.name != newUser;
-//         })
-//         console.log(filter);
-//         person = filter;
-//         res.json({newUser: person})
-//     } catch (error) {
-//         console.log(error);
-//     }
-// });
+
 
 app.delete('/delete/:user', (req, res)=>{
     const id = req.params.user
@@ -93,10 +81,13 @@ app.delete('/delete/:user', (req, res)=>{
     res.status(200).json({
         message: 'deleted user',
         data: person
-    })
+    });
 
-})
+});
 
+app.get('/all-users', (req,res) => {
+    res.json({allUsers: person})
+});
 
 
 // Creating a server using express the expressjs framework
