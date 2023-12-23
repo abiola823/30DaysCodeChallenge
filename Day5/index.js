@@ -49,7 +49,7 @@ app.post('/post', (req, res) => {
             age
         };
         const personArr = person.push(personObj);
-        res.status(201).json({userDetails: person})
+        return res.status(201).json({userDetails: person})
     } catch (error) {
         console.log(error);
     }
@@ -63,9 +63,9 @@ app.put('/update/:id', (req, res) => {
                 one.id = req.body.id;
                 one.name = req.body.name;
                 one.age = req.body.age;
-                res.json({updatedUser: person});
+                return res.json({updatedUser: person});
             }else{
-                res.send("no user found");
+                return res.send("no user found");
             }
           
         })

@@ -60,14 +60,14 @@ app.put('/update/:id', (req, res) => {
                 one.id = req.body.id;
                 one.name = req.body.name;
                 one.age = req.body.age;
-                res.json({updatedUser: person});
+                return res.json({updatedUser: person});
             }else{
-                res.send("no user found");
+                return res.send("no user found");
             }
           
         })
     } catch (error) {
-        console.log(error);
+        console.log("error");
     }
 });
 
