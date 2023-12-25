@@ -1,0 +1,1 @@
+Download mongDb compass and connect to it OR create an account on mongoDb Atlas and connect to it 

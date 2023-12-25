@@ -1,15 +1,15 @@
 import express from 'express';
 import request from './middleware.js';
 const app = express();
-const PORT = 3000;
-
-
-
-
-
+import userModel from './Model/model.js';
+import mongoose from 'mongoose';
+import * as dotenv from 'dotenv';
+dotenv.config()
+const PORT = process.env.PORT;
+// create a connection to mongodb
+mongoose.connect(process.env.MONGODBURL);
 app.use(express.json());
 app.use(request);// custom middleware to log the date to the console
-
 
 
 let person = [
