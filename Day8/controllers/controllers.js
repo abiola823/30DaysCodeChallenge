@@ -1,28 +1,6 @@
 import express from "express";
 import userModel from "../Model/model.js";
 
-let person = [
-    {
-        id: 1,
-        name: "abiola",
-        age: 25
-    },
-    {
-        id: 2,
-        name: "james",
-        age: 23
-    },
-    {
-        id: 3,
-        name: "joseph",
-        age: 27
-    },
-    {
-        id: 4,
-        name: "ade",
-        age: 21
-    }
-];
 
 const homepage = (req, res) => {
     res.send("Welcome to the 30 days of the code challenge");
