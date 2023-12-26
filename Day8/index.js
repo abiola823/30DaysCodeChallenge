@@ -1,5 +1,5 @@
 import express from 'express';
-import request from './middleware/middleware.js';
+import request from './middlware/middleware.js';
 const app = express();
 import * as dotenv from 'dotenv';
 import db from './config/db.js';
