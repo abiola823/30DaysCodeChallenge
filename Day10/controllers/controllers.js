@@ -1,3 +1,4 @@
+import { registerSchema } from "../Model/validationSchema.js";
 import userModel from "../Model/model.js";
 
 
@@ -7,6 +8,7 @@ const homepage = (req, res) => {
 
 const registerUser = async (req, res) => {
     try {
+        registerSchema();
         const {username, email, password} = req.body;//object destructuring
         const exist = await userModel.findOne({email});
             if(exist){

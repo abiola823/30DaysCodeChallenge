@@ -1,10 +1,10 @@
 import express from 'express';
-import {homepage, updateUser, getAllUsers,deleUser, addUser} from '../controllers/controllers.js'
+import {homepage, updateUser, getAllUsers,deleUser,registerUser} from '../controllers/controllers.js'
 const router = express.Router();
 
 router.get('/', homepage);
 
-router.post('/post', addUser);
+router.post('/register', registerUser);
 
 router.put('/update/:id', updateUser);
 

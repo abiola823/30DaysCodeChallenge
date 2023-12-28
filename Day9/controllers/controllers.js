@@ -1,4 +1,3 @@
-import express from "express";
 import userModel from "../Model/model.js";
 
 
@@ -6,7 +5,7 @@ const homepage = (req, res) => {
     res.send("Welcome to the 30 days of the code challenge");
 };
 
-const addUser = async (req, res) => {
+const registerUser = async (req, res) => {
     try {
         const {username, email, password} = req.body;//object destructuring
         const exist = await userModel.findOne({email});
@@ -53,7 +52,7 @@ const getAllUsers = async (req,res) => {
 
 export {
     homepage,
-    addUser,
+    registerUser,
     updateUser,
     deleUser,
     getAllUsers
