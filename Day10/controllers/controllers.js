@@ -8,7 +8,7 @@ const homepage = (req, res) => {
 
 const registerUser = async (req, res) => {
     try {
-        registerSchema();
+        registerSchema(req,res);
         const {username, email, password} = req.body;//object destructuring
         const exist = await userModel.findOne({email});
             if(exist){

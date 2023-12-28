@@ -1,5 +1,5 @@
-//import joi from 'joi';
-const registerSchema = () => {
+import joi from 'joi';
+const registerSchema = (req,res) => {
 const registerValidationSchema = joi.object({
     username: joi.string().required(),
     email: joi.string().email().required(),
