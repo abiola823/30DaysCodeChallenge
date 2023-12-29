@@ -19,7 +19,7 @@ const registerUser = async (req, res) => {
                     email,
                     password // password has been hashed in the schema file before saving to database
                 });
-               return res.status(201).json({userDetails: createUser});
+               return res.status(201).json({ userDetails: createUser});
             }
        
     } catch (error) {
@@ -34,7 +34,7 @@ const loginUser = async (req, res) => {
         if(!doesUserExist && await userModel.matchPassword(password)) {
             throw new Error("Invalid email or password");
         } else {
-            return res.json({userDetails: doesUserExist});
+            return res.json({isSuccessful: true, userDetails: doesUserExist});
         }
     
     } catch (error) {
