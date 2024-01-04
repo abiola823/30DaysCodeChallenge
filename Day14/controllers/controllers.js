@@ -10,7 +10,7 @@ const homepage = (req, res) => {
 const registerUser = async (req, res) => {
     try {
         registerSchema(req,res);
-        const {username, email, password} = req.body;//object destructuring
+        const {username, email, password, role} = req.body;//object destructuring
         const exist = await userModel.findOne({email});
             if(exist){
                 return res.status(403).send('User exists');
@@ -18,7 +18,8 @@ const registerUser = async (req, res) => {
                 const createUser = await userModel.create({
                     username, 
                     email,
-                    password // password has been hashed in the schema file before saving to database
+                    password, // password has been hashed in the schema file before saving to database
+                    role
                 });
                return res.status(201).json({ userDetails: createUser});
             }
