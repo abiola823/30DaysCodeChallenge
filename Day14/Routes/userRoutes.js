@@ -7,8 +7,6 @@ import {
     deleUser,
     registerUser, 
     loginUser,
-    getNewToken,
-    logout
 } from '../controllers/controllers.js'
 
 
