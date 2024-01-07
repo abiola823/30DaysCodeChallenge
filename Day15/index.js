@@ -14,6 +14,7 @@ db();
 app.use(express.json());
 app.use(urlencoded({extended: true}));
 app.use(request);// custom middleware to log the date to the console
+app.use(cookieParser());
 
 app.use('/user', userRoute);
 
