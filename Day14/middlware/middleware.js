@@ -29,16 +29,25 @@ function isUserLoggedIn(req, res, next) {
     if(tokenType == "Bearer") {
       const decoded = Jwt.verify(tokenValue, process.env.ACCESS_TOKEN_SECRET);
       req.decoded = decoded;
-      next();
-      return;
+      return next();
+  
     } 
+    return res.status(401).send("not-authorized");
   
-    res.status(401).send("not-authorized");
+  }
+
   
+  function adminsOnly(req, res, next) {
+    if(req.decoded.role == "admin") {
+      next();
+    } else {
+      return res.status(401).send("You are not an admin");
+    }
   }
 
   export {
     isUserLoggedIn,
-    request
+    request,
+    adminsOnly
     
   }
