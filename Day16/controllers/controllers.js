@@ -1,6 +1,13 @@
 import { registerSchema } from "../Model/validationSchema.js";
 import userModel from "../Model/model.js";
 import Jwt from "jsonwebtoken";
+import cookieParser from "cookie-parser";
+import express from 'express';
+const app = express();
+app.use(cookieParser());
+
+import { createRefreshToken, generateFreshToken, sendRefreshToken } from "../utils/generatetoken.js";
+
 
 
 const homepage = (req, res) => {
@@ -61,6 +68,13 @@ const loginUser = async (req, res) => {
     }
 
 }
+const logout = async (req, res) => {
+    const clear = res.clearCookie('refreshToken', {httpOnly: true});
+    // Logic here for also remove refreshtoken from db
+   res.send({
+        message: 'Logged out',
+    });
+}
 
 
 const updateUser = async (req, res) => {
@@ -94,12 +108,15 @@ const getNewToken = async (req, res) => {
 };
 
 
+
 export {
     homepage,
     registerUser,
     loginUser,
     updateUser,
     deleUser,
-    getAllUsers
+    getAllUsers,
+    getNewToken,
+    logout
 
 }
