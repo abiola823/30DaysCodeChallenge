@@ -32,7 +32,6 @@ router.use(isUserLoggedIn);
 
 router.put('/update/:id', updateUser);
 
-
 router.delete('/delete/:user', deleUser);
 
 router.get('/all-users', adminsOnly, getAllUsers);

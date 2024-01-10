@@ -15,6 +15,7 @@ const httpServer = createServer(app);
 const io = new Server(httpServer);
 import { fileURLToPath } from 'url';
 import uploadCollection from './Model/uploads.js';
+import cors from "cors";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const userRoute = router;
 
@@ -36,6 +37,9 @@ const storage = multer.diskStorage({
   });
   const upload = multer({ storage: storage });
 
+  app.use(cors({
+    origin: "*"
+  })); 
     // Route to handle file upload
   app.post('/upload', upload.single('pictureName'), async(req, res) => {
     if (!req.file) {
