@@ -68,7 +68,7 @@ const loginUser = async (req, res) => {
                 email: userEmail,
                 userId: _id,
                 role
-            }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1m' });
+            }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '5m' });
 
             return res.send({
                 message: "Sign in Successful",
