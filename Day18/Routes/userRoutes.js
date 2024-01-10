@@ -30,7 +30,7 @@ router.post('/logout', logout);
 
 router.use(isUserLoggedIn);
 
-router.put('/update/:id', updateUser);
+router.patch('/update/:id', updateUser);
 
 router.delete('/delete/:user', deleUser);
 
