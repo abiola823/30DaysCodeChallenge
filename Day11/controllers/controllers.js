@@ -31,7 +31,7 @@ const loginUser = async (req, res) => {
     try {
         const{email, password} = req.body;
         const doesUserExist = await userModel.findOne({email});
-        if(!doesUserExist && await userModel.matchPassword(password)) {
+        if(!doesUserExist && await doesUserExist.matchPassword(password)) {
             throw new Error("Invalid email or password");
         } else {
             return res.json({isSuccessful: true, userDetails: doesUserExist});

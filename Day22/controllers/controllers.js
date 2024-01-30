@@ -3,12 +3,16 @@ import userModel from "../Model/model.js";
 import Jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
 import express from 'express';
+import {send} from '../utils/sendMail.js';
+import Redis from 'redis';
+const redisClient = Redis.createClient();
+const DEFAULT_EXPIRATION = 3600;
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
 const app = express();
 app.use(cookieParser());
 
 import { createRefreshToken, generateFreshToken, sendRefreshToken } from "../utils/generatetoken.js";
-
-
 
 const homepage = (req, res) => {
     res.send("Welcome to the 30 days of the code challenge");
@@ -29,12 +33,25 @@ const registerUser = async (req, res) => {
                 password // password has been hashed in the schema file before saving to database
 
             });
-            return res.status(201).json({ userDetails: createUser });
+            res.status(201).json({ userDetails: createUser });
+            await send.sendMail({
+                to: email,
+                subject: `Welcome ${username}`,
+                html: `
+                    <div style= "background-color: orangered; color: white; padding:10px">
+                        <h1>Hi  ${username}</h1>
+                        <p>You are welcome, we're happy to have you as our new Member<p/>
+                        <p> This is my API created for my 30days of code challenge at kodecamp</p>
+                        
+                    </div>`
+            });
+            return;
         }
 
     } catch (error) {
         console.log(error);
     }
+
 
 }
 const loginUser = async (req, res) => {
@@ -52,14 +69,17 @@ const loginUser = async (req, res) => {
             
             const token = Jwt.sign({
                 email: userEmail,
-                userId: _id,
+                userId: _id, 
                 role
-            }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1m' });
+            }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '5m' });
+
+            redisClient.setEx('login', DEFAULT_EXPIRATION, JSON.stringify(token));
 
             return res.send({
                 message: "Sign in Successful",
                 token
             });
+          
 
 
         }
@@ -106,6 +126,8 @@ const getAllUsers = async (req, res) => {
 const getNewToken = async (req, res) => {
   generateFreshToken(req, res)
 };
+
+
 
 export {
     homepage,
